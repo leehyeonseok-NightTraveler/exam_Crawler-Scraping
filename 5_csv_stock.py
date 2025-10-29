@@ -5,14 +5,14 @@ from bs4 import BeautifulSoup
 
 url="https://finance.naver.com/sise/sise_market_sum.nhn?sosok=0&page="
 
-filename="코스피_시가총액1-50위.csv"
+filename="네이버 코스피_시가총액 1-50위.csv"
 # f = open(filename, "w", encoding="utf-8")
 # encoding="utf-8-sig"
 # f = open(filename, "w", encoding="utf-8-sig")
 f = open(filename, "w", encoding="utf-8-sig" ,newline='') 
 writer = csv.writer(f)
 
-title = "N	종목명	현재가	전일비	등락률	액면가	시가총액	상장주식수	외국인비율	거래량	PER	ROE".split("\t")
+title = "N 종목명 현재가 전일비 등락률 액면가 시가총액 상장주식수 외국인비율 거래량 PER ROE".split("\t")
 writer.writerow(title)
 
 #for page in range(1,3)
@@ -32,3 +32,4 @@ for page in range(1,2):
         # print(data)
 
         writer.writerow(data)
+
