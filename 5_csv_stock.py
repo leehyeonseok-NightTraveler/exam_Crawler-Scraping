@@ -7,12 +7,12 @@ url="https://finance.naver.com/sise/sise_market_sum.nhn?sosok=0&page="
 
 filename="코스피_시가총액1-50위.csv"
 # f = open(filename, "w", encoding="utf-8")
-# encoding="utf-8-sig" 엑셀에서 한글 깨짐 방지
+# encoding="utf-8-sig"
 # f = open(filename, "w", encoding="utf-8-sig")
-f = open(filename, "w", encoding="utf-8-sig" ,newline='') # newline='' 엑셀에서 빈줄 생기는 현상 방지
+f = open(filename, "w", encoding="utf-8-sig" ,newline='') 
 writer = csv.writer(f)
 
-title = "N	종목명	현재가	전일비	등락률	액면가	시가총액	상장주식수	외국인비율	거래량	PER	ROE".split("\t") #.split("\t") : 탭으로 구분
+title = "N	종목명	현재가	전일비	등락률	액면가	시가총액	상장주식수	외국인비율	거래량	PER	ROE".split("\t")
 writer.writerow(title)
 
 #for page in range(1,3)
@@ -25,9 +25,10 @@ for page in range(1,2):
     for row in date_rows:
         columns = row.find_all("td")
         # print("@# len=>", len(columns))
-        if len(columns) == 1: # 의미 없는 데이터는 skip
+        if len(columns) == 1:
             continue
         # data = [column.get_text() for column in columns]
         data = [column.get_text().strip() for column in columns]
         # print(data)
+
         writer.writerow(data)
